@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
     create_table :reviews, id: :uuid do |t|
       t.text :content
       t.uuid :property_id
-      t.float :rating
+      t.integer :rating
 
       t.timestamps
     end
