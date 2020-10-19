@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## Enable 'pgcrypto' Postgres extension
+- $ ```psql -d rate_your_landlord_backend_development -c 'CREATE EXTENSION pgcrypto'```
