@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :landlords, only: [:index, :show]
-      resources :properties, only: [:index]
+      resources :properties, only: [:index, :show]
       resources :reviews, only: [:index]
     end
   end
