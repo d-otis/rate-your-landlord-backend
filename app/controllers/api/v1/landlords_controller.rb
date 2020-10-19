@@ -17,7 +17,7 @@ class Api::V1::LandlordsController < ApplicationController
 # add in once properties serializer is fleshed out
   def options
     options = {
-      include: [:properties]
+      include: [:properties, :reviews]
     }
   end
 end
