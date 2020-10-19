@@ -3,7 +3,6 @@ class CreateProperties < ActiveRecord::Migration[6.0]
     create_table :properties, id: :uuid do |t|
       t.string :address
       t.uuid :landlord_id
-      t.float :rating
 
       t.timestamps
     end
