@@ -8,23 +8,23 @@
 
 Landlord.destroy_all
 Property.destroy_all
+Review.destroy_all
 
-num_landlords = 5
+num_landlords = 2
+num_properties_per_landlord = 3
 
 num_landlords.times do 
   Landlord.create(
-    name: Faker::Name.name,
-    rating: rand * 5
+    name: Faker::Name.name
   )
 end
 
 puts "You have made #{Landlord.count} landlords"
 
-5.times do 
+num_properties_per_landlord.times do 
   Landlord.all.each do |ll|
     property = Property.create(
-      address: Faker::Address.full_address,
-      rating: rand * 5
+      address: Faker::Address.full_address
     )
     ll.properties << property
   end
@@ -32,4 +32,23 @@ end
 
 puts "#{Property.count} properties created!"
 
-# Make Reviews!
+# Landlord Reviews
+  Landlord.all.each do |ll|
+    2.times do
+      ll.reviews.create(
+        content: Faker::Lorem.paragraph(sentence_count: 4),
+        rating: rand(1..5)
+      )
+    end
+    puts "#{ll.name} has #{ll.reviews.count} reviews"
+  end
+
+Property.all.each do |p|
+  2.times do
+    p.reviews.create(
+      content: Faker::Lorem.paragraph(sentence_count: 4),
+      rating: rand(1..5)
+    )
+  end
+  puts "#{p.address} has #{p.reviews.count} reviews"
+end
