@@ -3,7 +3,7 @@ class Landlord < ApplicationRecord
   has_many :properties
 
   def aggregate_rating
-    ((personal_review_avg + properties_review_avg) / 2.0).round(2)
+    ((personal_review_avg + property_review_avg) / 2.0).round(2)
   end
 
   def personal_review_avg
@@ -11,8 +11,14 @@ class Landlord < ApplicationRecord
   end
 
   def property_review_avg
-    properties_review_avg = self.properties.collect do |property|
-      (property.reviews.collect {|review| review.rating}.sum / property.reviews.count.to_f).round(2)
-    end.sum
+    # 1. map all property ratings to an array
+    # 2. sum that array and devide it by how 
+      # many property reviews landlord has
+
+    ratings_arr = self.properties.collect do |p|
+      p.reviews.collect {|r| r.rating}
+    end.flatten
+
+    (ratings_arr.sum / ratings_arr.count.to_f).round(2)
   end
 end
