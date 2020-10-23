@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  has_many :reviews, as: :reviewable
+  has_many :reviews
   belongs_to :landlord
   has_one_attached :image
 

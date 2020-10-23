@@ -1,6 +1,6 @@
 class Landlord < ApplicationRecord
-  has_many :reviews, as: :reviewable
   has_many :properties
+  has_many :reviews, :through => :properties
 
   def aggregate_rating
     ((personal_review_avg + property_review_avg) / 2.0).round(2)

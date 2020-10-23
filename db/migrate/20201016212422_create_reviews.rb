@@ -3,6 +3,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
     create_table :reviews, id: :uuid do |t|
       t.text :content
       t.integer :rating
+      t.uuid :property_id
 
       t.timestamps
     end
