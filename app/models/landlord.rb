@@ -1,5 +1,5 @@
 class Landlord < ApplicationRecord
-  has_many :properties
+  has_many :properties, :dependent => :destroy
   has_many :reviews, :through => :properties
 
   def aggregate_rating
