@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
   belongs_to :landlord
   has_one_attached :image
 
