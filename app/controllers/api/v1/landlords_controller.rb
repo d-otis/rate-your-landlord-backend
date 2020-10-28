@@ -16,10 +16,10 @@ class Api::V1::LandlordsController < ApplicationController
     landlord = Landlord.new(landlord_params)
 
     if landlord.save
-      # return the newly created thing in JSON
       render json: LandlordSerializer.new(landlord, options).serialized_json
     else
       # send error message
+      # based on validation errors
       render json: {}, status: 500
     end
   end
