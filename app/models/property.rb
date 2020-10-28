@@ -5,7 +5,7 @@ class Property < ApplicationRecord
   has_one_attached :image
 
   def set_rating
-    sum_ratings = self.reviews.map {|r| r.rating}.sum_ratings
+    sum_ratings = self.reviews.map {|r| r.rating}.sum
     reviews_count = self.reviews.count.to_f
     new_rating = sum_ratings / reviews_count
 
