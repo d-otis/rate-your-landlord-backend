@@ -21,7 +21,7 @@ class Api::V1::LandlordsController < ApplicationController
       render json: LandlordSerializer.new(landlord, options).serialized_json
     else
       # send error message
-      binding.pry
+      render json: {}, status: 500
     end
   end
 
