@@ -12,6 +12,18 @@ class Api::V1::LandlordsController < ApplicationController
     render json: LandlordSerializer.new(landlord, options).serialized_json
   end
 
+  def create
+    landlord = Landlord.new(params[:landlord])
+
+    if landlord.save
+      binding.pry
+      # return the newly created thing in JSON
+    else
+      # send error message
+      binding.pry
+    end
+  end
+
   private
 
 # add in once properties serializer is fleshed out
