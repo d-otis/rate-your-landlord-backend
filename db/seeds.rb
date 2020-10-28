@@ -32,17 +32,6 @@ end
 
 puts "#{Property.count} properties created!"
 
-# Landlord Reviews
-  Landlord.all.each do |ll|
-    2.times do
-      ll.reviews.create(
-        content: Faker::Lorem.paragraph(sentence_count: 4),
-        rating: rand(1..5)
-      )
-    end
-    puts "#{ll.name} has #{ll.reviews.count} reviews"
-  end
-
 Property.all.each do |p|
   2.times do
     p.reviews.create(
@@ -50,5 +39,7 @@ Property.all.each do |p|
       rating: rand(1..5)
     )
   end
+  p.set_rating
+  p.landlord.set_rating
   puts "#{p.address} has #{p.reviews.count} reviews"
 end
