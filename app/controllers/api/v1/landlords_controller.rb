@@ -13,7 +13,7 @@ class Api::V1::LandlordsController < ApplicationController
   end
 
   def create
-    landlord = Landlord.new(params[:landlord])
+    landlord = Landlord.new(landlord_params)
 
     if landlord.save
       binding.pry
@@ -33,4 +33,9 @@ class Api::V1::LandlordsController < ApplicationController
       include: [:properties, :reviews]
     }
   end
+
+  def landlord_params
+    params.require(:landlord).permit(:name)
+  end
+
 end
