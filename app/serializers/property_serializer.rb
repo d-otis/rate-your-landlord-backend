@@ -1,12 +1,8 @@
 class PropertySerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :address, :landlord_id
+  attributes :address, :landlord_id, :rating
   has_many :reviews
-
-  attribute :review_average do |property|
-    property.review_average
-  end
 
   attribute :has_image do |property|
     property.image.attached?
