@@ -1,10 +1,14 @@
 class Property < ApplicationRecord
   has_many :reviews, :dependent => :destroy
   belongs_to :landlord
+  
   has_one_attached :image
 
-  def review_average
-    (self.reviews.collect {|review| review.rating}.flatten.sum / self.reviews.count.to_f).round(2)
-  end
+  def set_rating
+    sum_ratings = self.reviews.map {|r| r.rating}.sum_ratings
+    reviews_count = self.reviews.count.to_f
+    new_rating = sum_ratings / reviews_count
 
+    self.update(rating: new_rating)
+  end
 end
