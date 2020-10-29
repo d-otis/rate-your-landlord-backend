@@ -24,6 +24,10 @@ class Api::V1::LandlordsController < ApplicationController
     end
   end
 
+  def update
+    binding.pry
+  end
+
   private
 
 # add in once properties serializer is fleshed out
