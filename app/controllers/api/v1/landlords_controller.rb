@@ -25,7 +25,14 @@ class Api::V1::LandlordsController < ApplicationController
   end
 
   def update
-    binding.pry
+    landlord = Landlord.find_by(id: params[:id])
+
+    if landlord.update(landlord_params)
+      render json: LandlordSerializer.new(landlord, options).serialized_json
+    else
+      # handle this error, bro
+      render json: {}, status: 500
+    end
   end
 
   private
