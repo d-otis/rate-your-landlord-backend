@@ -34,6 +34,12 @@ class Api::V1::LandlordsController < ApplicationController
     end
   end
 
+  def destroy
+    @landlord.destroy
+
+    render json: LandlordSerializer.new(@landlord, options).serialized_json
+  end
+
   private
 
 # add in once properties serializer is fleshed out
