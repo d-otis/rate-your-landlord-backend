@@ -1,4 +1,5 @@
 class Api::V1::LandlordsController < ApplicationController
+  before_action :set_landlord, only: [:show, :update, :destroy]
 
   def index
     landlords = Landlord.order(created_at: :desc)
@@ -46,6 +47,10 @@ class Api::V1::LandlordsController < ApplicationController
 
   def landlord_params
     params.require(:landlord).permit(:name)
+  end
+
+  def set_landlord
+    @landlord = Landlord.find_by(id: params[:id])
   end
 
 end
