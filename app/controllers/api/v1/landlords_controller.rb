@@ -8,9 +8,8 @@ class Api::V1::LandlordsController < ApplicationController
   end
 
   def show
-    landlord = Landlord.find_by(id: params[:id])
 
-    render json: LandlordSerializer.new(landlord, options).serialized_json
+    render json: LandlordSerializer.new(@landlord, options).serialized_json
   end
 
   def create
@@ -26,10 +25,9 @@ class Api::V1::LandlordsController < ApplicationController
   end
 
   def update
-    landlord = Landlord.find_by(id: params[:id])
 
-    if landlord.update(landlord_params)
-      render json: LandlordSerializer.new(landlord, options).serialized_json
+    if @landlord.update(landlord_params)
+      render json: LandlordSerializer.new(@landlord, options).serialized_json
     else
       # handle this error, bro
       render json: {}, status: 500
