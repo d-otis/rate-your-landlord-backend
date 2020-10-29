@@ -11,6 +11,10 @@ class Api::V1::PropertiesController < ApplicationController
     render json: PropertySerializer.new(property, options).serialized_json
   end
 
+  def create
+    
+  end
+
   private
 
   def options
