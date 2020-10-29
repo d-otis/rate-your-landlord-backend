@@ -12,7 +12,8 @@ class Api::V1::PropertiesController < ApplicationController
   end
 
   def create
-    
+    property = Property.new(property_params)
+    binding.pry
   end
 
   private
@@ -21,5 +22,9 @@ class Api::V1::PropertiesController < ApplicationController
     options = {
       include: [:reviews]
     }
+  end
+
+  def property_params
+    params.require(:property).permit(:address, :landlord_id)
   end
 end
