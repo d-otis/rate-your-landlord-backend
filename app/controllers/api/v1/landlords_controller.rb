@@ -50,7 +50,7 @@ class Api::V1::LandlordsController < ApplicationController
   end
 
   def landlord_params
-    params.require(:landlord).permit(:name)
+    params.require(:landlord).permit(:name, :properties_attributes => {})
   end
 
   def set_landlord
