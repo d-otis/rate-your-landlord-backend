@@ -2,6 +2,8 @@ class Landlord < ApplicationRecord
   has_many :properties, :dependent => :destroy
   has_many :reviews, :through => :properties
 
+  accepts_nested_attributes_for :properties
+
   def set_rating
     sum_ratings = self.reviews.map {|r| r.rating}.sum
     reviews_count = self.reviews.count.to_f
