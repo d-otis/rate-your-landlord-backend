@@ -56,5 +56,4 @@ class Api::V1::LandlordsController < ApplicationController
   def set_landlord
     @landlord = Landlord.find_by(id: params[:id])
   end
-
 end
