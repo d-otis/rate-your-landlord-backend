@@ -10,6 +10,8 @@ class Api::V1::ReviewsController < ApplicationController
     review = Review.new(reviews_params)
 
     if review.save
+      set_ratings(review)
+
       render json: ReviewSerializer.new(review).serialized_json
     else
       render json: {}, status: 500
@@ -20,6 +22,11 @@ class Api::V1::ReviewsController < ApplicationController
 
   def reviews_params
     params.require(:review).permit(:content, :rating, :property_id)
+  end
+
+  def set_ratings(review)
+    review.property.set_rating
+    review.property.landlord.set_rating
   end
 
 end
