@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :landlords, only: [:index, :show, :create, :update, :destroy]
       resources :properties, only: [:index, :show, :create]
-      resources :reviews, only: [:index]
+      resources :reviews, only: [:index, :create]
     end
   end
 
