@@ -7,10 +7,13 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
-    # make sure to trigger rating update 
-    # after this review is created 
-    # for landlord AND property
+    review = Review.new(reviews_params)
+
+    if review.save
+      render json: ReviewSerializer.new(review).serialized_json
+    else
+      render json: {}, status: 500
+    end
   end
 
   private
