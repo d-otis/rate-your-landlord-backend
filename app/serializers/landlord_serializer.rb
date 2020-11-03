@@ -1,6 +1,6 @@
 class LandlordSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :created_at, :id
+  attributes :name, :created_at, :id, :rating
   has_many :properties
   has_many :reviews
 
