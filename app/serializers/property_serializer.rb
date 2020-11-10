@@ -5,7 +5,7 @@ class PropertySerializer
   has_many :reviews
 
   attribute :has_image do |property|
-    !property.image_url.nil?
+    !property.image_url.empty?
   end
 
   # attribute :image_url do |property|
