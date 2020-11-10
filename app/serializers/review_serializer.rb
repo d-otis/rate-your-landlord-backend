@@ -13,4 +13,8 @@ class ReviewSerializer
   attribute :property_rating do |review|
     review.property.rating
   end
+
+  attribute :address do |review|
+    review.property.address
+  end
 end
