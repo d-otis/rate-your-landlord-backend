@@ -31,6 +31,6 @@ class Api::V1::PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:address, :landlord_id)
+    params.require(:property).permit(:address, :landlord_id, :image_url)
   end
 end
