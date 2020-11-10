@@ -24,7 +24,8 @@ puts "You have made #{Landlord.count} landlords"
 num_properties_per_landlord.times do 
   Landlord.all.each do |ll|
     property = Property.create(
-      address: Faker::Address.full_address
+      address: Faker::Address.full_address,
+      image_url: "https://www.dan-foley.com/wp-content/uploads/2019/03/tigue_triangle.jpg"
     )
     ll.properties << property
   end
