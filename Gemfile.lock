@@ -92,6 +92,7 @@ GEM
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lorem_ipsum_text (0.0.6)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -210,6 +211,7 @@ DEPENDENCIES
   faker
   fast_jsonapi
   listen (~> 3.2)
+  lorem_ipsum_text
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 4.1)
