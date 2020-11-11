@@ -10,8 +10,13 @@ Landlord.destroy_all
 Property.destroy_all
 Review.destroy_all
 
-num_landlords = 2
+num_landlords = 5
 num_properties_per_landlord = 3
+
+num_photos = num_landlords * num_properties_per_landlord
+
+photos = Unsplash::Photo.search('apartment', page = rand(1..20), per_page = num_photos, orientation = 'landscape')
+i = 0
 
 num_landlords.times do 
   Landlord.create(
@@ -21,13 +26,14 @@ end
 
 puts "You have made #{Landlord.count} landlords"
 
-num_properties_per_landlord.times do 
+num_properties_per_landlord.times do
   Landlord.all.each do |ll|
     property = Property.create(
       address: Faker::Address.full_address,
-      image_url: "https://www.dan-foley.com/wp-content/uploads/2019/03/tigue_triangle.jpg"
+      image_url: photos[i].urls.regular
     )
     ll.properties << property
+    i += 1
   end
 end
 
@@ -36,7 +42,7 @@ puts "#{Property.count} properties created!"
 Property.all.each do |p|
   2.times do
     p.reviews.create(
-      content: Faker::Lorem.paragraph(sentence_count: 4),
+      content: LoremIpsumText::multiple_para(rand(1..3)).join("\r\n\r\n"),
       rating: rand(1..5)
     )
   end
