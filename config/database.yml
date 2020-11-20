@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: rate_your_landlord_backend_production
-  username: rate_your_landlord_backend
-  password: <%= ENV['RATE_YOUR_LANDLORD_BACKEND_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
