@@ -1,4 +1,4 @@
-class Api::V1::LandlordsController < ApplicationController
+class Api::V1::LandlordsController < ApiController
   before_action :set_landlord, only: [:show, :update, :destroy]
 
   def index

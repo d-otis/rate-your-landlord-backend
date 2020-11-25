@@ -1,4 +1,4 @@
-class Api::V1::PropertiesController < ApplicationController
+class Api::V1::PropertiesController < ApiController
   def index
     properties = Property.order(created_at: :desc)
 
