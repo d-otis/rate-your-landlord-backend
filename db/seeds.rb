@@ -50,3 +50,4 @@ Property.all.each do |p|
   p.landlord.set_rating
   puts "#{p.address} has #{p.reviews.count} reviews"
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
