@@ -16,12 +16,16 @@ num_properties_per_landlord = 3
 num_photos = num_landlords * num_properties_per_landlord
 
 photos = Unsplash::Photo.search('apartment', page = rand(1..20), per_page = num_photos, orientation = 'landscape')
+landlord_images = Unsplash::Photo.random(orientation: 'squarish', count: num_landlords, query: 'person')
+l = 0
 i = 0
 
 num_landlords.times do 
   Landlord.create(
-    name: Faker::Name.name
+    name: Faker::Name.name,
+    image_url: landlord_images[l].urls.regular
   )
+  l += 1
 end
 
 puts "You have made #{Landlord.count} landlords"
