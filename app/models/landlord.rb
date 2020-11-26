@@ -11,4 +11,9 @@ class Landlord < ApplicationRecord
 
     self.update(rating: new_rating)
   end
+
+  def set_random_image
+    url = Unsplash::Photo.random(orientation: 'squarish', query: 'person').urls.regular
+    self.image_url = url
+  end
 end

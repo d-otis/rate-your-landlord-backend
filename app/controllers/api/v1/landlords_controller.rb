@@ -14,7 +14,8 @@ class Api::V1::LandlordsController < ApplicationController
 
   def create
     landlord = Landlord.new(landlord_params)
-
+    landlord.set_random_image
+    
     if landlord.save
       render json: LandlordSerializer.new(landlord, options).serialized_json
     else
