@@ -21,7 +21,7 @@ class Api::V1::LandlordsController < ApplicationController
     else
       # send error message
       # based on validation errors
-      render json: {}, status: 500
+      render json: {errors: landlords.errors.full_messages}, status: 500
     end
   end
 
